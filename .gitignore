@@ -1,0 +1,8 @@
+#VSCode
+.vscode
+
+#MacOS
+*.dSYM/
+.DS_Store
+
+#C
