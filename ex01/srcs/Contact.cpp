@@ -1,10 +1,12 @@
 #include "../includes/Contact.hpp"
+#include <iostream>
 
-Contact::Contact(std::string newFirstName, std::string newLastName, std::string newNickName, std::string newPhoneNumber, std::string newDarkestSecret)
+void Contact::print()
 {
-	firstName = newFirstName;
-	lastName = newLastName;
-	nickName = newNickName;
-	phoneNumber = newPhoneNumber;
-	darkestSecret = newDarkestSecret;
+	std::cout << "Contact card: \n";
+	std::cout << "\tFirst name: " << firstName << "\n";
+	std::cout << "\tLast name: " << lastName << "\n";
+	std::cout << "\tNickname: " << nickname << "\n";
+	std::cout << "\tPhone number: " << phoneNumber << "\n";
+	std::cout << "\tDarkest secret: " << darkestSecret << "\n";
 }

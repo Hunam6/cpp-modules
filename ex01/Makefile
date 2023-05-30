@@ -2,6 +2,7 @@ NAME := phonebook
 FLAGS := -std=c++98 -Wall -Wextra -Werror
 
 SRCS := $(addprefix srcs/,\
+	main.cpp \
 	Contact.cpp \
 	PhoneBook.cpp \
 )

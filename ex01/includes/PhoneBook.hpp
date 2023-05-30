@@ -7,11 +7,13 @@ class PhoneBook
 {
 private:
 	std::array<Contact, 8> contacts;
+	int current;
 public:
-	PhoneBook() {}
+	PhoneBook();
 	void add();
-	void search(std::string rawContact);
+	void search();
 	void exit();
+	bool checkIdx(std::string rawIdx, int maxIdx);
 };
 
 #endif

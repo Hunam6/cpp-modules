@@ -1,45 +1,100 @@
 #include "../includes/PhoneBook.hpp"
+#include "../includes/main.hpp"
 #include <iostream>
+#include <iomanip>
+
+PhoneBook::PhoneBook()
+{
+	current = -1;
+}
 
 void PhoneBook::add()
 {
-	std::cout << "ADD called\n";
+	if (current == 8 || current == -1)
+		current = 0;
+	contacts[current].firstName.clear();
+	contacts[current].lastName.clear();
+	contacts[current].nickname.clear();
+	contacts[current].phoneNumber.clear();
+	contacts[current].darkestSecret.clear();
+
+	std::cout << "Enter the contact informations:\n";
+	while (contacts[current].firstName.size() == 0)
+	{
+		std::cout << "First name: ";
+		std::getline(std::cin, contacts[current].firstName);
+	}
+	while (contacts[current].lastName.size() == 0)
+	{
+		std::cout << "Last name: ";
+		std::getline(std::cin, contacts[current].lastName);
+	}
+	while (contacts[current].nickname.size() == 0)
+	{
+		std::cout << "Nickname: ";
+		std::getline(std::cin, contacts[current].nickname);
+	}
+	while (contacts[current].phoneNumber.size() == 0)
+	{
+		std::cout << "Phone number: ";
+		std::getline(std::cin, contacts[current].phoneNumber);
+	}
+	while (contacts[current].darkestSecret.size() == 0)
+	{
+		std::cout << "Darkest secret: ";
+		std::getline(std::cin, contacts[current].darkestSecret);
+	}
+	current++;
+	std::cout << "Contact added\n";
 }
 
-void PhoneBook::search(std::string rawContact)
+void PhoneBook::search()
 {
-	(void) rawContact;
-	std::cout << "SEARCH called\n";
+	if (current == -1)
+	{
+		std::cout << "No contact registered.\n";
+		return;
+	}
+
+	std::cout << "     Index|First name| Last name|  Nickname\n";
+	std::cout << "----------|----------|----------|----------\n";
+	int i = 0;
+	for (; contacts[i].firstName.size() > 0 && i < 8; i++)
+	{
+		std::cout << std::setw(10) << std::right << i << "|";
+		std::cout << std::setw(10) << std::right << truncate(contacts[i].firstName) << "|";
+		std::cout << std::setw(10) << std::right << truncate(contacts[i].lastName) << "|";
+		std::cout << std::setw(10) << std::right << truncate(contacts[i].nickname) << "\n";
+	}
+
+	std::string raw_index;
+	while (!checkIdx(raw_index, i - 1))
+	{
+		std::cout << "Enter the index of the contact to display: ";
+		std::getline(std::cin, raw_index);
+	}
+	contacts[std::stoi(raw_index)].print();
 }
 
 void PhoneBook::exit()
 {
-	std::cout << "EXIT called\n";
+	std::exit(0);
 }
 
-static void getUserInput(PhoneBook *phoneBook)
+bool PhoneBook::checkIdx(std::string rawIdx, int maxIdx)
 {
-	std::string command;
-	std::cout << "> ";
-	while (std::getline(std::cin, command))
+	if (rawIdx.empty())
+		return false;
+	int idx;
+	try
 	{
-		if (command.compare("ADD") == 0)
-			phoneBook->add();
-		else if (command.compare("SEARCH") == 0)
-			phoneBook->search(command); //TODO: replace `command`
-		else if (command.compare("EXIT") == 0)
-			phoneBook->exit();
-		std::cout << "> ";
+		idx = std::stoi(rawIdx);
 	}
-}
-
-int main()
-{
-	PhoneBook phoneBook;
-	std::cout << "Empty Phone Book created...\n\n";
-	std::cout << "Please enter one of the supported commands:\n";
-	std::cout << "\tADD: save a new contact\n";
-	std::cout << "\tSEARCH: display a specific contact\n";
-	std::cout << "\tEXIT: exit the program, contacts lost\n";
-	getUserInput(&phoneBook);
+	catch (...)
+	{
+		return false;
+	}
+	if (idx < 0 || idx > maxIdx)
+		return false;
+	return true;
 }

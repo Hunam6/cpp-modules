@@ -5,16 +5,14 @@
 
 class Contact
 {
-private:
+public:
 	std::string firstName;
 	std::string lastName;
-	std::string nickName;
+	std::string nickname;
 	std::string phoneNumber;
 	std::string darkestSecret;
-
-public:
 	Contact() {}
-	Contact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
+	void print();
 };
 
 #endif
