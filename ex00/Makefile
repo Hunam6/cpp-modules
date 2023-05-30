@@ -9,7 +9,7 @@ all: $(NAME)
 
 $(NAME):
 	@echo "Compiling $(NAME)..."
-	@cc $(FLAGS) $(SRCS) -o $(NAME)
+	@g++ $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
 
