@@ -1,5 +1,5 @@
 NAME := violence
-FLAGS := -std=c++98 -Wall -Wextra -Werror -I includes -g -fsanitize=address,undefined
+FLAGS := -std=c++98 -Wall -Wextra -Werror -I includes
 
 SRCS := $(addprefix srcs/,\
 	main.cpp \
