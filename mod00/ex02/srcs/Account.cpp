@@ -34,14 +34,11 @@ void Account::displayAccountsInfos(void)
 }
 
 Account::Account(int initial_deposit)
+	: _accountIndex(_nbAccounts), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
 {
-	_accountIndex = _nbAccounts++;
-	_amount = initial_deposit;
+	_nbAccounts++;
 	_totalAmount += initial_deposit;
-	_nbDeposits = 0;
-	_nbWithdrawals = 0;
 	_displayTimestamp();
-
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created\n";
 }
 
@@ -112,9 +109,9 @@ void Account::_displayTimestamp(void)
 	std::tm *localTime = std::localtime(&currentTime);
 
 	std::cout << std::setfill('0') << "[" << localTime->tm_year + 1900
-			<< std::setw(2) << localTime->tm_mon + 1
-			<< std::setw(2) << localTime->tm_mday
-			<< "_" << std::setw(2) << localTime->tm_hour
-			<< std::setw(2) << localTime->tm_min
-			<< std::setw(2) << localTime->tm_sec << "] ";
+			  << std::setw(2) << localTime->tm_mon + 1
+			  << std::setw(2) << localTime->tm_mday
+			  << "_" << std::setw(2) << localTime->tm_hour
+			  << std::setw(2) << localTime->tm_min
+			  << std::setw(2) << localTime->tm_sec << "] ";
 }

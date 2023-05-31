@@ -3,11 +3,6 @@
 #include <iostream>
 #include <iomanip>
 
-PhoneBook::PhoneBook()
-{
-	current = -1;
-}
-
 void PhoneBook::add()
 {
 	if (current == 8 || current == -1)

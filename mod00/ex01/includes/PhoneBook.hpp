@@ -9,8 +9,9 @@ class PhoneBook
 private:
 	std::array<Contact, 8> contacts;
 	int current;
+
 public:
-	PhoneBook();
+	PhoneBook() : current(-1) {}
 	void add();
 	void search();
 	void exit();
