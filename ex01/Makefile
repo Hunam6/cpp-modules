@@ -1,5 +1,5 @@
 NAME := phonebook
-FLAGS := -std=c++98 -Wall -Wextra -Werror
+FLAGS := -std=c++98 -Wall -Wextra -Werror -I includes
 
 SRCS := $(addprefix srcs/,\
 	main.cpp \

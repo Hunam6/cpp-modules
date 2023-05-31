@@ -1,4 +1,4 @@
-#include "../includes/PhoneBook.hpp"
+#include "PhoneBook.hpp"
 #include <iostream>
 
 std::string truncate(std::string str)

@@ -1,5 +1,5 @@
-#include "../includes/PhoneBook.hpp"
-#include "../includes/main.hpp"
+#include "PhoneBook.hpp"
+#include "main.hpp"
 #include <iostream>
 #include <iomanip>
 
