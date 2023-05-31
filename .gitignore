@@ -5,7 +5,7 @@
 *.dSYM/
 .DS_Store
 
-#C
+#CPP
 ex00/megaphone
 ex01/phonebook
 ex02/logger
