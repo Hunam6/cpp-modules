@@ -1,3 +1,7 @@
+#pragma once
+#ifndef FIXED_HPP
+#define FIXED_HPP
+
 #include <iostream>
 
 class Fixed
@@ -20,3 +24,5 @@ public:
 };
 
 std::ostream &operator<<(std::ostream &stream, const Fixed &fixed);
+
+#endif

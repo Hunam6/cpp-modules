@@ -1,3 +1,7 @@
+#pragma once
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
+
 #include "ClapTrap.hpp"
 
 class FragTrap : public ClapTrap
@@ -13,3 +17,5 @@ public:
 	void attack(const std::string &target);
 	void highFivesGuys();
 };
+
+#endif
