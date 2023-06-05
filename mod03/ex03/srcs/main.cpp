@@ -19,4 +19,5 @@ int main(void)
 	diamondTrap.takeDamage(2);
 	diamondTrap.beRepaired(1);
 	diamondTrap.highFivesGuys();
+	diamondTrap.whoAmI();
 }
