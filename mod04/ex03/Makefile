@@ -1,5 +1,5 @@
 NAME := interfaces
-FLAGS := -std=c++98 -Wall -Wextra -Werror -I includes -g #TODO: rm -g
+FLAGS := -std=c++98 -Wall -Wextra -Werror -I includes
 
 SRCS := $(addprefix srcs/,\
 	main.cpp \
