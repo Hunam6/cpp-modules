@@ -1,19 +1,25 @@
-NAME := megaphone
-FLAGS := -std=c++98 -Wall -Wextra -Werror
+OBJS_DIR = objs
+SRCS_DIR = .
+SRCS = $(wildcard $(SRCS_DIR)/*.cpp)
+OBJS = $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
 
-SRCS := megaphone.cpp
-
-.PHONY: all bonus clean fclean re
+NAME = megaphone
+CXX = g++
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME):
-	@echo "Compiling $(NAME)..."
-	@g++ $(FLAGS) $(SRCS) -o $(NAME)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp | $(OBJS_DIR)
+	@echo "\033[2K[$(NAME)]: compiling $<\033[A"
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	@$(CXX) -o $@ $^ $(CXXFLAGS)
+	@echo "\033[2K[$(NAME)]: compiled"
+
+$(OBJS_DIR):
+	@mkdir -p $(OBJS_DIR)
 
 clean:
-
-fclean: clean
-	@rm -f $(NAME)
-
-re: fclean all
+	@rm -rf $(OBJS_DIR) $(NAME)
+	@echo "\033[2K[$(NAME)]: cleaned"

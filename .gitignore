@@ -6,6 +6,8 @@
 .DS_Store
 
 #CPP
+mod*/ex*/objs/
+
 mod00/ex00/megaphone
 mod00/ex01/phonebook
 mod00/ex02/logger
