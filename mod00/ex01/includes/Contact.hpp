@@ -12,6 +12,7 @@ public:
 	std::string nickname;
 	std::string phoneNumber;
 	std::string darkestSecret;
+
 	Contact();
 	void print();
 };

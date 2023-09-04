@@ -1,25 +1,30 @@
-OBJS_DIR = objs
-SRCS_DIR = .
-SRCS = $(wildcard $(SRCS_DIR)/*.cpp)
-OBJS = $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
+NAME := megaphone
+SRCS_DIR := .
+BUILD_DIR := build
 
-NAME = megaphone
-CXX = g++
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
+CXX := c++
+CXXFLAGS := -std=c++98 -Wall -Wextra -Werror
 
-all: $(NAME)
+SRCS := $(wildcard $(SRCS_DIR)/*.cpp)
+OBJS := $(patsubst $(SRCS_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
+DEPS := $(patsubst $(SRCS_DIR)/%.cpp,$(BUILD_DIR)/%.d,$(SRCS))
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp | $(OBJS_DIR)
-	@echo "\033[2K[$(NAME)]: compiling $<\033[A"
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+.PHONY: all clean
 
-$(NAME): $(OBJS)
-	@$(CXX) -o $@ $^ $(CXXFLAGS)
-	@echo "\033[2K[$(NAME)]: compiled"
-
-$(OBJS_DIR):
-	@mkdir -p $(OBJS_DIR)
+all: $(BUILD_DIR) $(NAME)
 
 clean:
-	@rm -rf $(OBJS_DIR) $(NAME)
-	@echo "\033[2K[$(NAME)]: cleaned"
+	@rm -rf $(BUILD_DIR) $(NAME)
+
+$(NAME): $(OBJS)
+	@$(CXX) $(CXXFLAGS) $^ -o $@
+	@echo "\033[2K[$(NAME)]: compiled"
+
+-include $(DEPS)
+
+$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.cpp Makefile
+	@echo "\033[2K[$(NAME)]: compiling $<\033[A"
+	@$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)
