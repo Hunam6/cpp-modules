@@ -3,21 +3,33 @@
 
 int main(int ac, char **av)
 {
-	if (ac < 2)
-	{
-		std::cout << "Usage:\n\tharlFilter <level>\n";
-		return 1;
-	}
-	std::string input = av[1];
-	if ((input != "DEBUG" && input != "INFO" && input != "WARNING" && input != "ERROR"))
-	{
-		std::cout << "[ Probably complaining about insignificant problems ]\n";
-		return 0;
-	}
-	Harl harl(input);
+	std::string input;
+	if (ac == 2)
+		input = av[1];
+	int levelThreshold = -1;
+	Harl harl;
 
-	harl.complain("DEBUG");
-	harl.complain("INFO");
-	harl.complain("WARNING");
-	harl.complain("ERROR");
+	if (input == "DEBUG")
+		levelThreshold = 0;
+	else if (input == "INFO")
+		levelThreshold = 1;
+	else if (input == "WARNING")
+		levelThreshold = 2;
+	else if (input == "ERROR")
+		levelThreshold = 3;
+
+	switch (levelThreshold)
+	{
+	case 0:
+		harl.complain("DEBUG");
+	case 1:
+		harl.complain("INFO");
+	case 2:
+		harl.complain("WARNING");
+	case 3:
+		harl.complain("ERROR");
+		break;
+	default:
+		std::cout << "[ Probably complaining about insignificant problems ]\n";
+	}
 }
