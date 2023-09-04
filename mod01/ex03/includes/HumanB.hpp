@@ -12,10 +12,10 @@ private:
 	Weapon *weapon;
 
 public:
-	HumanB(std::string newName) : name(newName), weapon(NULL) {}
-	~HumanB() {}
+	HumanB(std::string name);
+	~HumanB();
 	void attack();
-	void setWeapon(Weapon &newWeapon);
+	void setWeapon(Weapon &weapon);
 };
 
 #endif

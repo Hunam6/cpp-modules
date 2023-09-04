@@ -12,8 +12,8 @@ private:
 	Weapon &weapon;
 
 public:
-	HumanA(std::string newName, Weapon &newWeapon) : name(newName), weapon(newWeapon) {}
-	~HumanA() {}
+	HumanA(std::string name, Weapon &weapon);
+	~HumanA();
 	void attack();
 };
 

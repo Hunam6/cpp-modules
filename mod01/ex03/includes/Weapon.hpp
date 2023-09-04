@@ -10,10 +10,10 @@ private:
 	std::string type;
 
 public:
-	Weapon(std::string newType) : type(newType) {}
-	~Weapon() {}
+	Weapon(std::string type);
+	~Weapon();
 	const std::string &getType() const;
-	void setType(std::string newType);
+	void setType(std::string type);
 };
 
 #endif

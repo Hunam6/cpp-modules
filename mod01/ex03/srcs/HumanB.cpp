@@ -1,6 +1,11 @@
 #include "HumanB.hpp"
 #include <iostream>
 
+HumanB::HumanB(std::string name)
+	: name(name), weapon(NULL) {}
+
+HumanB::~HumanB() {}
+
 void HumanB::attack()
 {
 	if (weapon)
@@ -9,7 +14,7 @@ void HumanB::attack()
 		std::cout << name << " attacks with their hand\n";
 }
 
-void HumanB::setWeapon(Weapon &newWeapon)
+void HumanB::setWeapon(Weapon &weapon)
 {
-	weapon = &newWeapon;
+	this->weapon = &weapon;
 }
