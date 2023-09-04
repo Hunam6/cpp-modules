@@ -1,7 +1,8 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap()
+	: ClapTrap()
 {
 	std::cout << "ScavTrap: Default constructor called\n";
 	setHitPoints(100);
@@ -9,7 +10,8 @@ ScavTrap::ScavTrap() : ClapTrap()
 	setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(const std::string newName) : ClapTrap(newName)
+ScavTrap::ScavTrap(const std::string name)
+	: ClapTrap(name)
 {
 	std::cout << "ScavTrap: Name constructor called\n";
 	setHitPoints(100);
@@ -17,7 +19,8 @@ ScavTrap::ScavTrap(const std::string newName) : ClapTrap(newName)
 	setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
+ScavTrap::ScavTrap(const ScavTrap &other)
+	: ClapTrap(other)
 {
 	std::cout << "ScavTrap: Copy constructor called\n";
 	setName(other.getName());

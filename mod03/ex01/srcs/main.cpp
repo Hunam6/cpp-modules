@@ -15,8 +15,8 @@ int main(void)
 	scavTrap.attack("Mario");
 	scavTrap.attack("Mario");
 	scavTrap.attack("Mario");
-	scavTrap.attack("Mario");
+	scavTrap.attack("Mario"); // not enough energyPoints left
 	scavTrap.takeDamage(2);
-	scavTrap.beRepaired(1);
+	scavTrap.beRepaired(1); // not enough energyPoints left
 	scavTrap.guardGate();
 }

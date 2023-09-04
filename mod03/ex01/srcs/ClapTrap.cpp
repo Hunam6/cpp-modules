@@ -9,8 +9,8 @@ ClapTrap::ClapTrap()
 	std::cout << "ClapTrap: Default constructor called\n";
 }
 
-ClapTrap::ClapTrap(const std::string newName)
-	: name(newName),
+ClapTrap::ClapTrap(const std::string name)
+	: name(name),
 	  hitPoints(10),
 	  energyPoints(10),
 	  attackDamage(0)
