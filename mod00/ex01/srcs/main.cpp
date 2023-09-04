@@ -19,7 +19,7 @@ void getUserInput(PhoneBook &phoneBook)
 		else if (command.compare("SEARCH") == 0)
 			phoneBook.search();
 		else if (command.compare("EXIT") == 0)
-			phoneBook.exit();
+			std::exit(0);
 		std::cout << "> ";
 	}
 }

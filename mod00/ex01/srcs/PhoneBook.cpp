@@ -3,6 +3,11 @@
 #include <iostream>
 #include <iomanip>
 
+PhoneBook::PhoneBook()
+	: current(-1)
+{
+}
+
 void PhoneBook::add()
 {
 	if (current == 8 || current == -1)
@@ -69,11 +74,6 @@ void PhoneBook::search()
 		std::getline(std::cin, raw_index);
 	}
 	contacts[std::stoi(raw_index)].print();
-}
-
-void PhoneBook::exit()
-{
-	std::exit(0);
 }
 
 bool PhoneBook::checkIdx(std::string rawIdx, int maxIdx)

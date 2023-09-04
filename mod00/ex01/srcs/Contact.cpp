@@ -1,6 +1,8 @@
 #include "Contact.hpp"
 #include <iostream>
 
+Contact::Contact() {}
+
 void Contact::print()
 {
 	std::cout << "Contact card: \n";
