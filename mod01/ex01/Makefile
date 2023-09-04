@@ -1,23 +1,30 @@
 NAME := brainz
-FLAGS := -std=c++98 -Wall -Wextra -Werror -I includes
+SRCS_DIR := srcs
+BUILD_DIR := build
 
-SRCS := $(addprefix srcs/,\
-	main.cpp \
-	Zombie.cpp \
-	zombieHorde.cpp \
-)
+CXX := c++
+CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -Iincludes
 
-.PHONY: all bonus clean fclean re
+SRCS := $(wildcard $(SRCS_DIR)/*.cpp)
+OBJS := $(patsubst $(SRCS_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
+DEPS := $(patsubst $(SRCS_DIR)/%.cpp,$(BUILD_DIR)/%.d,$(SRCS))
 
-all: $(NAME)
+.PHONY: all clean
 
-$(NAME):
-	@echo "Compiling $(NAME)..."
-	@g++ $(FLAGS) $(SRCS) -o $(NAME)
+all: $(BUILD_DIR) $(NAME)
 
 clean:
+	@rm -rf $(BUILD_DIR) $(NAME)
 
-fclean: clean
-	@rm -f $(NAME)
+$(NAME): $(OBJS)
+	@$(CXX) $(CXXFLAGS) $^ -o $@
+	@echo "\033[2K[$(NAME)]: compiled"
 
-re: fclean all
+-include $(DEPS)
+
+$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.cpp Makefile
+	@echo "\033[2K[$(NAME)]: compiling $<\033[A"
+	@$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)
