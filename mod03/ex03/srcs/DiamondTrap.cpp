@@ -9,11 +9,11 @@ DiamondTrap::DiamondTrap()
 	ClapTrap::setAttackDamage(FragTrap::getAttackDamage());
 }
 
-DiamondTrap::DiamondTrap(const std::string newName)
+DiamondTrap::DiamondTrap(const std::string name)
 {
 	std::cout << "DiamondTrap: Name constructor called\n";
-	name = newName;
-	ClapTrap::setName(newName + "_clap_name");
+	this->name = name;
+	ClapTrap::setName(name + "_clap_name");
 	ClapTrap::setHitPoints(FragTrap::getHitPoints());
 	ClapTrap::setEnergyPoints(ScavTrap::getEnergyPoints());
 	ClapTrap::setAttackDamage(FragTrap::getAttackDamage());

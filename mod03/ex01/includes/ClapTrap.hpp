@@ -16,15 +16,15 @@ protected:
 	std::string getName() const;
 	void setName(const std::string name);
 	int getHitPoints() const;
-	void setHitPoints(const int newHitPoints);
+	void setHitPoints(const int hitPoints);
 	int getEnergyPoints() const;
-	void setEnergyPoints(const int newEnergyPoints);
+	void setEnergyPoints(const int energyPoints);
 	int getAttackDamage() const;
-	void setAttackDamage(const int newAttackDamage);
+	void setAttackDamage(const int attackDamage);
 
 public:
 	ClapTrap();
-	ClapTrap(const std::string newName);
+	ClapTrap(const std::string name);
 	ClapTrap(const ClapTrap &other);
 	~ClapTrap();
 

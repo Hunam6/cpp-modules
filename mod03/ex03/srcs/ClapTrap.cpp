@@ -9,8 +9,8 @@ ClapTrap::ClapTrap()
 	std::cout << "ClapTrap: Default constructor called\n";
 }
 
-ClapTrap::ClapTrap(const std::string newName)
-	: name(newName),
+ClapTrap::ClapTrap(const std::string name)
+	: name(name),
 	  hitPoints(10),
 	  energyPoints(10),
 	  attackDamage(0)
@@ -71,9 +71,9 @@ std::string ClapTrap::getName() const
 	return name;
 }
 
-void ClapTrap::setName(const std::string newName)
+void ClapTrap::setName(const std::string name)
 {
-	name = newName;
+	this->name = name;
 }
 
 int ClapTrap::getHitPoints() const
@@ -81,9 +81,9 @@ int ClapTrap::getHitPoints() const
 	return hitPoints;
 }
 
-void ClapTrap::setHitPoints(const int newHitPoints)
+void ClapTrap::setHitPoints(const int hitPoints)
 {
-	hitPoints = newHitPoints;
+	this->hitPoints = hitPoints;
 }
 
 int ClapTrap::getEnergyPoints() const
@@ -91,9 +91,9 @@ int ClapTrap::getEnergyPoints() const
 	return energyPoints;
 }
 
-void ClapTrap::setEnergyPoints(const int newEnergyPoints)
+void ClapTrap::setEnergyPoints(const int energyPoints)
 {
-	energyPoints = newEnergyPoints;
+	this->energyPoints = energyPoints;
 }
 
 int ClapTrap::getAttackDamage() const
@@ -101,7 +101,7 @@ int ClapTrap::getAttackDamage() const
 	return attackDamage;
 }
 
-void ClapTrap::setAttackDamage(const int newAttackDamage)
+void ClapTrap::setAttackDamage(const int attackDamage)
 {
-	attackDamage = newAttackDamage;
+	this->attackDamage = attackDamage;
 }

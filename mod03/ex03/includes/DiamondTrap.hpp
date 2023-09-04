@@ -13,7 +13,7 @@ private:
 
 public:
 	DiamondTrap();
-	DiamondTrap(const std::string newName);
+	DiamondTrap(const std::string name);
 	DiamondTrap(const DiamondTrap &other);
 	~DiamondTrap();
 

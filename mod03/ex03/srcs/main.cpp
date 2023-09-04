@@ -15,9 +15,9 @@ int main(void)
 	diamondTrap.attack("Mario");
 	diamondTrap.attack("Mario");
 	diamondTrap.attack("Mario");
-	diamondTrap.attack("Mario");
+	diamondTrap.attack("Mario"); // not enough energyPoints left
 	diamondTrap.takeDamage(2);
-	diamondTrap.beRepaired(1);
+	diamondTrap.beRepaired(1); // not enough energyPoints left
 	diamondTrap.highFivesGuys();
 	diamondTrap.whoAmI();
 }
