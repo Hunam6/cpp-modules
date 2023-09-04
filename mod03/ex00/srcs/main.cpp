@@ -15,7 +15,7 @@ int main(void)
 	clapTrap.attack("Mario");
 	clapTrap.attack("Mario");
 	clapTrap.attack("Mario");
-	clapTrap.attack("Mario");
+	clapTrap.attack("Mario"); // not enough energyPoints left
 	clapTrap.takeDamage(2);
-	clapTrap.beRepaired(1);
+	clapTrap.beRepaired(1); // not enough energyPoints left
 }

@@ -9,8 +9,8 @@ ClapTrap::ClapTrap()
 	std::cout << "Default constructor called\n";
 }
 
-ClapTrap::ClapTrap(const std::string newName)
-	: name(newName),
+ClapTrap::ClapTrap(const std::string name)
+	: name(name),
 	  hitPoints(10),
 	  energyPoints(10),
 	  attackDamage(0)
@@ -59,7 +59,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (energyPoints == 0)
+	if (hitPoints == 0 || energyPoints == 0)
 		return;
 	std::cout << "ClapTrap " << name << " is repairing by " << amount << " points of damage!\n";
 	hitPoints += amount;
