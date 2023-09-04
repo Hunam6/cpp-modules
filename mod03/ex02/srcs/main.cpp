@@ -15,8 +15,8 @@ int main(void)
 	fragTrap.attack("Mario");
 	fragTrap.attack("Mario");
 	fragTrap.attack("Mario");
-	fragTrap.attack("Mario");
+	fragTrap.attack("Mario"); // not enough energyPoints left
 	fragTrap.takeDamage(2);
-	fragTrap.beRepaired(1);
+	fragTrap.beRepaired(1); // not enough energyPoints left
 	fragTrap.highFivesGuys();
 }

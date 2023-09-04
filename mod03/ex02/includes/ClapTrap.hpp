@@ -14,7 +14,7 @@ private:
 
 protected:
 	std::string getName() const;
-	void setName(const std::string newName);
+	void setName(const std::string name);
 	int getHitPoints() const;
 	void setHitPoints(const int newHitPoints);
 	int getEnergyPoints() const;
