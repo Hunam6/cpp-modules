@@ -1,6 +1,8 @@
 #include "Zombie.hpp"
 #include <iostream>
 
+Zombie::Zombie() {}
+
 Zombie::~Zombie()
 {
 	std::cout << name << " got deleted by life.\n";
