@@ -11,10 +11,10 @@ private:
 	const Fixed y;
 
 public:
-	Point() : x(0), y(0) {}
-	Point(float newX, float newY) : x(newX), y(newY) {}
-	Point(const Point &other) : x(other.x), y(other.y) {}
-	~Point() {}
+	Point();
+	Point(float x, float y);
+	Point(const Point &other);
+	~Point();
 
 	Point &operator=(const Point &other);
 
