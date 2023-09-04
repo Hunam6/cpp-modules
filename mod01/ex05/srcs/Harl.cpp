@@ -1,6 +1,10 @@
 #include "Harl.hpp"
 #include <iostream>
 
+Harl::Harl() {}
+
+Harl::~Harl() {}
+
 void Harl::debug()
 {
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!\n";
@@ -28,7 +32,7 @@ void Harl::complain(std::string level)
 	std::string levelsName[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	for (int i = 0; i < 4; i++)
-		if (level.compare(levelsName[i]) == 0)
+		if (level == levelsName[i])
 		{
 			(this->*levelsFunction[i])();
 			break;
