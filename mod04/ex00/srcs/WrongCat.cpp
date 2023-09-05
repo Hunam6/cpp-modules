@@ -8,21 +8,20 @@ WrongCat::WrongCat()
 }
 
 WrongCat::WrongCat(WrongCat &other)
+	: WrongAnimal(other)
 {
 	std::cout << "WrongCat: Copy constructor called\n";
-	type = other.type;
 }
 
 WrongCat::~WrongCat()
 {
 	std::cout << "WrongCat: Destructor called\n";
-	type = "WrongCat";
 }
 
 WrongCat &WrongCat::operator=(WrongCat &other)
 {
+	WrongAnimal::operator=(other);
 	std::cout << "WrongCat: = operator called\n";
-	type = other.type;
 	return *this;
 }
 
