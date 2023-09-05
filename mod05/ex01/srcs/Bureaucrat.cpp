@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include <iostream>
 
 Bureaucrat::Bureaucrat()
 	: name(""), grade(150) {}
@@ -62,4 +63,18 @@ void Bureaucrat::demote()
 	if (grade == 150)
 		throw GradeTooLowException();
 	grade++;
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << name << " signed " << form.getName() << '\n';
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << name << " couldn't sign " << form.getName()
+				  << " because the " << e.what() << '\n';
+	}
 }
