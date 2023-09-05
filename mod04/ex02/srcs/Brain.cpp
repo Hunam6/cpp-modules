@@ -9,7 +9,8 @@ Brain::Brain()
 Brain::Brain(Brain &other)
 {
 	std::cout << "Brain: Copy constructor called\n";
-	std::copy(other.ideas->begin(), other.ideas->end(), ideas->begin());
+	for (int i = 0; i < 100; i++)
+		ideas[i] = other.ideas[i];
 }
 
 Brain::~Brain()
@@ -20,6 +21,7 @@ Brain::~Brain()
 Brain &Brain::operator=(Brain &other)
 {
 	std::cout << "Brain: = operator called\n";
-	std::copy(other.ideas->begin(), other.ideas->end(), ideas->begin());
+	for (int i = 0; i < 100; i++)
+		ideas[i] = other.ideas[i];
 	return *this;
 }

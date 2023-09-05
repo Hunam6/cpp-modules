@@ -8,21 +8,20 @@ Dog::Dog()
 }
 
 Dog::Dog(Dog &other)
+	: Animal(other)
 {
 	std::cout << "Dog: Copy constructor called\n";
-	type = other.type;
 }
 
 Dog::~Dog()
 {
 	std::cout << "Dog: Destructor called\n";
-	type = "Dog";
 }
 
 Dog &Dog::operator=(Dog &other)
 {
+	Animal::operator=(other);
 	std::cout << "Dog: = operator called\n";
-	type = other.type;
 	return *this;
 }
 

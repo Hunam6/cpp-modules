@@ -13,15 +13,14 @@ private:
 protected:
 	std::string type;
 
+public:
 	Animal();
 	Animal(Animal &other);
-
-public:
-	virtual ~Animal();
+	virtual ~Animal() = 0;
 
 	Animal &operator=(Animal &other);
 
-	virtual void makeSound() const = 0;
+	virtual void makeSound() const;
 	std::string getType() const;
 	Brain *getBrain();
 };

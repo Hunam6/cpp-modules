@@ -8,21 +8,20 @@ Cat::Cat()
 }
 
 Cat::Cat(Cat &other)
+	: Animal(other)
 {
 	std::cout << "Cat: Copy constructor called\n";
-	type = other.type;
 }
 
 Cat::~Cat()
 {
 	std::cout << "Cat: Destructor called\n";
-	type = "Cat";
 }
 
 Cat &Cat::operator=(Cat &other)
 {
+	Animal::operator=(other);
 	std::cout << "Cat: = operator called\n";
-	type = other.type;
 	return *this;
 }
 
