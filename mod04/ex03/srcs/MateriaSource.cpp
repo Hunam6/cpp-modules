@@ -1,5 +1,8 @@
 #include "MateriaSource.hpp"
 
+MateriaSource::MateriaSource()
+	: inventoryLen(0) {}
+
 MateriaSource::~MateriaSource()
 {
 	for (int i = 0; i < inventoryLen; i++)

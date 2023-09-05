@@ -1,4 +1,6 @@
 #pragma once
+#ifndef AMATERIA_HPP
+#define AMATERIA_HPP
 #include "ICharacter.hpp"
 #include <string>
 
@@ -8,10 +10,10 @@ protected:
 	std::string _type;
 
 public:
-	AMateria() {}
-	AMateria(AMateria &other) : _type(other._type) {}
-	AMateria(std::string const &type) : _type(type) {}
-	virtual ~AMateria() {}
+	AMateria();
+	AMateria(AMateria &other);
+	AMateria(std::string const &type);
+	virtual ~AMateria();
 
 	AMateria &operator=(AMateria &other);
 
@@ -19,3 +21,5 @@ public:
 	virtual AMateria *clone() const = 0;
 	virtual void use(ICharacter &target);
 };
+
+#endif

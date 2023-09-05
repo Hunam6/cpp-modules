@@ -1,4 +1,6 @@
 #pragma once
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
 
@@ -11,7 +13,7 @@ private:
 
 public:
 	Character();
-	Character(std::string newName) : name(newName) {}
+	Character(std::string name);
 	Character(Character &other);
 	~Character();
 
@@ -22,3 +24,5 @@ public:
 	void unequip(int idx);
 	void use(int idx, ICharacter &target);
 };
+
+#endif
