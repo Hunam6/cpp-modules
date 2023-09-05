@@ -14,13 +14,13 @@ int main()
 		else
 			animals[i] = new Dog();
 	}
-	animals[2]->getBrain()->ideas->append("crazy idea");
-	std::cout << "animals[2][0] = " << animals[2]->getBrain()->ideas[0] << "\n";
-	animals[2]->makeSound();
+	animals[0]->getBrain()->ideas->append("crazy idea");
+	std::cout << "animals[0] -> brain -> ideas[0] = "
+			  << animals[0]->getBrain()->ideas[0] << "\n";
 
-	Cat *deepCopy = new Cat(*static_cast<Cat *>(animals[2]));
-	std::cout << "deepCopy[0] = " << deepCopy->getBrain()->ideas[0] << "(should be empty)\n";
-	delete deepCopy;
+	Cat deepCopyCat(dynamic_cast<Cat &>(*animals[0]));
+	std::cout << "deepCopyCat -> brain -> ideas[0] = "
+			  << deepCopyCat.getBrain()->ideas[0] << "\n";
 
 	for (int i = 0; i < 10; i++)
 		delete animals[i];
