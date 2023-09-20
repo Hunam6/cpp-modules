@@ -6,8 +6,8 @@ void randomChump(std::string name);
 
 int main()
 {
-	Zombie *zom1 = newZombie("Dym");
+	Zombie *zom1 = newZombie("Heap");
 	zom1->announce();
 	delete zom1;
-	randomChump("Static");
+	randomChump("Stack");
 }
