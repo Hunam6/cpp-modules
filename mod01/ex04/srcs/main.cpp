@@ -39,6 +39,7 @@ int main(int ac, char **av)
 	if (ac != 4)
 		(std::cerr << "Usage: <filename> <s1> <s2>\n", exit(0));
 	std::string fileContent = getFileContent(av[1]);
-	replaceSubString(fileContent, std::string(av[2]), av[3]);
+	if (!std::string(av[2]).empty())
+		replaceSubString(fileContent, std::string(av[2]), av[3]);
 	writeOuputFile(std::string(av[1]), fileContent);
 }
