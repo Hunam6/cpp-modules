@@ -71,5 +71,5 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 	if (bureaucrat.getGrade() <= gradeRequiredToSign)
 		isSigned = true;
 	else
-		throw GradeTooLowException("grade to low to sign the form");
+		throw GradeTooLowException("the grade is too low to sign the form");
 }

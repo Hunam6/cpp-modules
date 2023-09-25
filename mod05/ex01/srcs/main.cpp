@@ -4,6 +4,15 @@
 
 int main()
 {
+	try
+	{
+		Form form("TOP SECRET", -1, 4);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Error: " << e.what() << '\n';
+	}
+
 	Form form("TOP SECRET", 1, 4);
 	Bureaucrat realPep("John Smith", 1);
 	Bureaucrat fakePep("Smith John", 7);
