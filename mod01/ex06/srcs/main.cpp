@@ -6,30 +6,22 @@ int main(int ac, char **av)
 	std::string input;
 	if (ac == 2)
 		input = av[1];
-	int levelThreshold = -1;
-	Harl harl;
-
-	if (input == "DEBUG")
-		levelThreshold = 0;
-	else if (input == "INFO")
-		levelThreshold = 1;
-	else if (input == "WARNING")
-		levelThreshold = 2;
-	else if (input == "ERROR")
-		levelThreshold = 3;
-
-	switch (levelThreshold)
+	if (ac != 2 || !(input == "DEBUG" || input == "INFO" || input == "WARNING" || input == "ERROR"))
 	{
-	case 0:
-		harl.complain("DEBUG");
-	case 1:
-		harl.complain("INFO");
-	case 2:
-		harl.complain("WARNING");
-	case 3:
-		harl.complain("ERROR");
-		break;
-	default:
 		std::cout << "[ Probably complaining about insignificant problems ]\n";
+		return 0;
+	}
+
+	Harl harl;
+	switch (input[0])
+	{
+	case 'D':
+		harl.complain("DEBUG");
+	case 'I':
+		harl.complain("INFO");
+	case 'W':
+		harl.complain("WARNING");
+	default:
+		harl.complain("ERROR");
 	}
 }
