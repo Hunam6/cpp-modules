@@ -11,9 +11,8 @@ Point::Point(const Point &other)
 
 Point::~Point() {}
 
-Point &Point::operator=(const Point &other)
+Point &Point::operator=(const Point &)
 {
-	(void)other;
 	return *this;
 }
 

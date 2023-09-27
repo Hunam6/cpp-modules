@@ -16,19 +16,15 @@ Fixed::Fixed(const Fixed &other)
 }
 
 Fixed::Fixed(const int value)
+	: rawBits(value << fractionalBitsNb)
 {
 	std::cout << "Int constructor called\n";
-
-	rawBits = value << fractionalBitsNb;
 }
 
 Fixed::Fixed(const float value)
+	: rawBits(std::roundf(value * (1 << fractionalBitsNb)))
 {
 	std::cout << "Float constructor called\n";
-
-	int integerPart = static_cast<int>(roundf(value)) << fractionalBitsNb;
-	int fractionalPart = (value - roundf(value)) * 100;
-	rawBits = integerPart | fractionalPart;
 }
 
 Fixed::~Fixed()
@@ -142,7 +138,7 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat() const
 {
-	return (rawBits >> fractionalBitsNb) + (rawBits & UCHAR_MAX) / 100.0;
+	return (static_cast<float>(rawBits) / (1 << fractionalBitsNb));
 }
 
 int Fixed::toInt() const
