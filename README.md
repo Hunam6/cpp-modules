@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>CPP Modules</h1>
+  <h1>C++ Modules</h1>
   <b>A series of 35 C++ exercises, from the simplest to the most complex and challenging ones.</b>
 </div>
 
