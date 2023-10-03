@@ -28,4 +28,8 @@ int main()
 	wrongCat->makeSound();
 	delete wrongAnimal;
 	delete wrongCat;
+
+	const WrongCat *otherWrongCat = new WrongCat();
+	otherWrongCat->makeSound();
+	delete otherWrongCat;
 }
