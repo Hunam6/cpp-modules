@@ -6,14 +6,18 @@
 
 class Dog : public Animal
 {
+private:
+	Brain *brain;
+
 public:
 	Dog();
 	Dog(Dog &other);
-	~Dog();
+	virtual ~Dog();
 
 	Dog &operator=(Dog &other);
 
 	void makeSound() const;
+	Brain *getBrain() const;
 };
 
 #endif
