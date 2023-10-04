@@ -1,4 +1,4 @@
-NAME := brains
+NAME := badAnimal
 SRCS_DIR := srcs
 BUILD_DIR := build
 
