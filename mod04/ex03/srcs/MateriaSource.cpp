@@ -3,10 +3,25 @@
 MateriaSource::MateriaSource()
 	: inventoryLen(0) {}
 
+MateriaSource::MateriaSource(MateriaSource &other)
+	: inventoryLen(other.inventoryLen)
+{
+	for (int i = 0; i < inventoryLen; i++)
+		inventory[i] = other.inventory[i];
+}
+
 MateriaSource::~MateriaSource()
 {
 	for (int i = 0; i < inventoryLen; i++)
 		delete inventory[i];
+}
+
+MateriaSource &MateriaSource::operator=(MateriaSource &other)
+{
+	inventoryLen = other.inventoryLen;
+	for (int i = 0; i < inventoryLen; i++)
+		inventory[i] = other.inventory[i];
+	return *this;
 }
 
 void MateriaSource::learnMateria(AMateria *materia)

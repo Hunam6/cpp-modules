@@ -17,6 +17,7 @@ Character::Character(std::string name)
 }
 
 Character::Character(Character &other)
+	: name(other.name)
 {
 	for (int i = 0; i < inventoryLen; i++)
 		delete inventory[i];
@@ -36,6 +37,7 @@ Character &Character::operator=(Character &other)
 	for (int i = 0; i < 4; i++)
 		inventory[i] = other.inventory[i];
 	inventoryLen = other.inventoryLen;
+	name = other.name;
 	return *this;
 }
 
@@ -67,7 +69,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
-	if (idx > 3 || inventory[idx] == NULL)
+	if (idx < 0 || idx > 3 || inventory[idx] == NULL)
 		return;
 	inventory[idx]->use(target);
 }

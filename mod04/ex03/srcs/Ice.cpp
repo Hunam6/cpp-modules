@@ -3,7 +3,7 @@
 
 Ice::Ice()
 {
-	_type = "ice";
+	type = "ice";
 }
 
 Ice *Ice::clone() const

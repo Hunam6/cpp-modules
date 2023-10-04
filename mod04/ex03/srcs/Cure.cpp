@@ -3,7 +3,7 @@
 
 Cure::Cure()
 {
-	_type = "cure";
+	type = "cure";
 }
 
 Cure *Cure::clone() const

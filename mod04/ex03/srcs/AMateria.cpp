@@ -3,23 +3,23 @@
 
 AMateria::AMateria() {}
 
-AMateria::AMateria(AMateria &other)
-	: _type(other._type) {}
-
 AMateria::AMateria(std::string const &type)
-	: _type(type) {}
+	: type(type) {}
+
+AMateria::AMateria(AMateria &other)
+	: type(other.type) {}
 
 AMateria::~AMateria() {}
 
 AMateria &AMateria::operator=(AMateria &other)
 {
-	_type = other._type;
+	type = other.type;
 	return *this;
 }
 
 std::string const &AMateria::getType() const
 {
-	return _type;
+	return type;
 }
 
 void AMateria::use(ICharacter &target)
