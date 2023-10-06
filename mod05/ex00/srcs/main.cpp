@@ -12,16 +12,16 @@ int main()
 		std::cerr << "Error: " << e.what() << '\n';
 	}
 
-	Bureaucrat pep("John Smith", 3);
-	pep.demote();
-	std::cout << pep;
-	pep.promote();
-	pep.promote();
-	pep.promote();
-	std::cout << pep;
+	Bureaucrat bureaucrat("John Smith", 3);
+	bureaucrat.demote();
+	std::cout << bureaucrat;
+	bureaucrat.promote();
+	bureaucrat.promote();
+	bureaucrat.promote();
+	std::cout << bureaucrat;
 	try
 	{
-		pep.promote();
+		bureaucrat.promote();
 	}
 	catch (const std::exception &e)
 	{
