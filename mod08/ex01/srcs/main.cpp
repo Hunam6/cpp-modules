@@ -14,10 +14,10 @@ int main()
 	std::cout << small_sp.longestSpan() << std::endl;
 
 	// long span
-	std::array<int, 20000> lots_of_numbers;
+	std::vector<int> lots_of_numbers;
 	std::srand(std::time(NULL));
-	for (size_t i = 0; i < lots_of_numbers.size(); ++i)
-		lots_of_numbers[i] = std::rand();
+	for (size_t i = 0; i < 20000; ++i)
+		lots_of_numbers.push_back(std::rand());
 
 	Span long_sp(20000);
 	// long_sp.addNumber(1); // will throw
