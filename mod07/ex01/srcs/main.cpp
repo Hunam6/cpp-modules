@@ -2,23 +2,6 @@
 #include <string>
 #include "iter.hpp"
 
-class Awesome
-{
-private:
-	int _n;
-
-public:
-	Awesome(void) : _n(42) {}
-
-	int get(void) const { return this->_n; }
-};
-
-std::ostream &operator<<(std::ostream &o, Awesome const &rhs)
-{
-	o << rhs.get();
-	return o;
-}
-
 template <typename T>
 void print(T const &x)
 {
@@ -28,10 +11,9 @@ void print(T const &x)
 
 int main()
 {
-	int tab[] = {0, 1, 2, 3, 4};
-	Awesome tab2[5];
+	int tab[] = {0, 1, 2, 3, 4, 5};
+	iter(tab, 6, print);
 
-	iter(tab, 5, print);
-
-	iter(tab2, 5, print);
+	std::string tab2[] = {"first", "second"};
+	iter(tab2, 2, print);
 }
