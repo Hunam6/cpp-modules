@@ -1,10 +1,15 @@
 #include <iostream>
-#include <array>
+#include <vector>
 #include "easyfind.hpp"
 
 int main()
 {
-	std::array<int, 5> arr = {3, 42, 7, 23, 9};
+	std::vector<int> arr;
+	arr.push_back(3);
+	arr.push_back(42);
+	arr.push_back(7);
+	arr.push_back(23);
+	arr.push_back(9);
 
 	std::cout << easyfind(arr, 42) << '\n';
 	// std::cout << easyfind(arr, -3) << '\n'; // will throw
