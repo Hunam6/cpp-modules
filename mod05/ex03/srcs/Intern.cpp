@@ -4,12 +4,16 @@
 
 Intern::Intern() {}
 
-Intern::Intern(Intern &) {}
+Intern::Intern(Intern &other)
+{
+	(void)other;
+}
 
 Intern::~Intern() {}
 
-Intern &Intern::operator=(Intern &)
+Intern &Intern::operator=(Intern &other)
 {
+	(void)other;
 	return *this;
 }
 
