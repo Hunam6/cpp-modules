@@ -14,15 +14,17 @@ int main()
 	}
 
 	Form form("TOP SECRET", 1, 4);
-	Bureaucrat realPep("John Smith", 1);
-	Bureaucrat fakePep("Smith John", 7);
+	Bureaucrat realJohn("John Smith", 1);
+	Bureaucrat fakeJohn("Smith John", 7);
 
+	std::cout << "\nInfo:\n";
 	std::cout << form;
-	std::cout << realPep;
-	std::cout << fakePep;
+	std::cout << realJohn;
+	std::cout << fakeJohn;
 
-	fakePep.signForm(form);
+	std::cout << "\nActions:\n";
+	fakeJohn.signForm(form);
 	std::cout << form;
-	realPep.signForm(form);
+	realJohn.signForm(form);
 	std::cout << form;
 }
