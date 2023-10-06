@@ -11,18 +11,19 @@ size_t ScalarConverter::ft_strlen(const char *str)
 
 int ScalarConverter::robustAtoi(const char *str, bool *errored)
 {
+	errno = 0;
 	long result = strtol(str, NULL, 10);
 
 	if (errno != 0)
 	{
 		*errored = true;
-		return result;
+		return static_cast<int>(result);
 	}
 
 	if (result > INT_MAX || result < INT_MIN)
 	{
 		*errored = true;
-		return result;
+		return static_cast<int>(result);
 	}
 
 	*errored = false;
@@ -33,7 +34,7 @@ ScalarConverter::type ScalarConverter::getType(const char *str)
 {
 	const size_t str_len = ft_strlen(str);
 
-	if (str_len == 1 && !('0' <= str[0] && str[0] <= '9'))
+	if (str_len == 3 && str[0] == '\'' && str[2] == '\'')
 		return CHAR;
 
 	bool dotFound = false;
@@ -73,10 +74,10 @@ void ScalarConverter::printChar(const int num, const bool errored)
 
 void ScalarConverter::printInt(const int num, const bool errored)
 {
-	if (!errored)
-		std::cout << "int: " << num << '\n';
-	else
+	if (errored)
 		std::cout << "int: impossible\n";
+	else
+		std::cout << "int: " << num << '\n';
 }
 
 void ScalarConverter::printReal(const double num, const bool is_float, const bool errored)
@@ -97,7 +98,7 @@ void ScalarConverter::printReal(const double num, const bool is_float, const boo
 	else
 		std::cout << num;
 
-	if (num == static_cast<long long>(num))
+	if (num == static_cast<int>(num))
 		std::cout << ".0";
 	if (is_float)
 		std::cout << "f";
@@ -116,40 +117,36 @@ void ScalarConverter::printInvalid()
 bool ScalarConverter::handlePseudoLiterals(const std::string &str)
 {
 	if (str.empty())
-	{
 		printInvalid();
-		return true;
-	}
-	if (str == "nan" || str == "nanf")
+	else if (str == "nan" || str == "nanf")
 	{
 		std::cout << "char: impossible\n"
 				  << "int: impossible\n"
 				  << "float: nanf\n"
 				  << "double: nan\n";
-		return true;
 	}
-	if (str == "-inf" || str == "-inff")
+	else if (str == "-inf" || str == "-inff")
 	{
 		std::cout << "char: impossible\n"
 				  << "int: impossible\n"
 				  << "float: -inff\n"
 				  << "double: -inf\n";
-		return true;
 	}
-	if (str == "+inf" || str == "+inff")
+	else if (str == "+inf" || str == "+inff")
 	{
 		std::cout << "char: impossible\n"
 				  << "int: impossible\n"
 				  << "float: inff\n"
 				  << "double: inf\n";
-		return true;
 	}
-	return false;
+	else
+		return false;
+	return true;
 }
 
 void ScalarConverter::handleChar(const char *str)
 {
-	const u_char _char = str[0];
+	const u_char _char = str[1];
 
 	printChar(_char, false);
 	printInt(static_cast<int>(_char), false);
