@@ -17,9 +17,7 @@ public:
 		const T nil;
 
 	public:
-		// TODO: check consts in args and return vals
-		// TODO: impl everything is separate file for Mr. norm
-		iterator(MutantStack &stack, int idx, bool isEnd = false)
+		iterator(const MutantStack &stack, int idx, bool isEnd = false)
 			: stack(stack), idx(idx), isEnd(isEnd), nil(T()) {}
 		iterator &operator++()
 		{
@@ -59,13 +57,13 @@ public:
 			--(*this);
 			return out;
 		}
-		bool operator==(iterator other) const
+		bool operator==(const iterator other) const
 		{
 			if (isEnd || other.isEnd)
 				return isEnd == other.isEnd;
 			return stack.c[idx] == other.stack.c[idx];
 		}
-		bool operator!=(iterator other) const
+		bool operator!=(const iterator other) const
 		{
 			return !(*this == other);
 		}
