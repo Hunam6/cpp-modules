@@ -11,8 +11,12 @@ private:
 
 	bool isValidDate(const std::string &str);
 	bool isValidYearMonthDay(long year, int month, int day);
+	int isValidValue(const std::string &str, double *result);
 	bool isValidLong(const std::string &str, long *result);
 	bool isValidDouble(const std::string &str, double *result);
+
+	void printRate(const std::string &original_date, const std::string &date,
+				   const std::string &original_value, double value);
 
 public:
 	BitcoinExchange();
@@ -21,7 +25,7 @@ public:
 
 	BitcoinExchange &operator=(const BitcoinExchange &other);
 
-	void search(std::string *error);
+	void search(const std::string &line);
 };
 
 #endif

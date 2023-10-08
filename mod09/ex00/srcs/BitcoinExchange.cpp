@@ -45,6 +45,17 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 	return *this;
 }
 
+int BitcoinExchange::isValidValue(const std::string &str, double *result)
+{
+	if (!isValidDouble(str, result))
+		return 0;
+	if (*result < 0)
+		return 1;
+	if (*result > 1000)
+		return 2;
+	return 3;
+}
+
 bool BitcoinExchange::isValidLong(const std::string &str, long *result)
 {
 	const char *cstr = str.c_str();
@@ -97,4 +108,60 @@ bool BitcoinExchange::isValidDate(const std::string &str)
 	if (!ss.eof())
 		return false;
 	return true;
+}
+
+void BitcoinExchange::printRate(const std::string &original_date, const std::string &date,
+								const std::string &original_value, double value)
+{
+	std::cout << original_date << " => " << original_value << " = " << value * db[date] << '\n';
+}
+
+void BitcoinExchange::search(const std::string &line)
+{
+	std::stringstream ss(line);
+	// get date
+	std::string date;
+	std::getline(ss, date, ' ');
+	if (ss.eof())
+	{
+		std::cerr << "Error: bad input => " << line << '\n';
+		return;
+	}
+	// check date
+	if (!isValidDate(date))
+	{
+		std::cerr << "Error: invalid date => " << date << '\n';
+		return;
+	}
+	// check delimiter
+	char ch[2];
+	ss.read(ch, 2);
+	if (ss.eof() || ch[0] != '|' || ch[1] != ' ')
+	{
+		std::cerr << "Error: bad input => " << line << '\n';
+		return;
+	}
+	// check value
+	std::string raw_value;
+	std::getline(ss, raw_value);
+	double value;
+	switch (isValidValue(raw_value, &value))
+	{
+	case 0:
+		std::cerr << "Error: invalid number.\n";
+		return;
+	case 1:
+		std::cerr << "Error: not a positive number.\n";
+		return;
+	case 2:
+		std::cerr << "Error: too large a number.\n";
+		return;
+	}
+	// get rate
+	if (db.count(date) > 0)
+		return printRate(date, date, raw_value, value);
+	std::map<std::string, double>::iterator dateFound = db.lower_bound(date);
+	if (dateFound != db.begin())
+		++dateFound;
+	printRate(date, (*dateFound).first, raw_value, value);
 }
