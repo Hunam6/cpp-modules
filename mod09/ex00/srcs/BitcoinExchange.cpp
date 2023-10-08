@@ -34,14 +34,15 @@ BitcoinExchange::BitcoinExchange()
 	}
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
-	: db(other.db) {} // TODO: check deep copy
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) { *this = other; }
 
 BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {
-	db = other.db; // TODO: check deep copy
+	for (std::map<std::string, double>::const_iterator it = other.db.begin();
+		 it != other.db.end(); ++it)
+		db[it->first] = it->second;
 	return *this;
 }
 

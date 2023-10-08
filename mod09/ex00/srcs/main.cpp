@@ -20,7 +20,11 @@ int main(int ac, char **av)
 	{
 		std::getline(input, line);
 		if (input.eof())
+		{
+			if (!line.empty())
+				std::cerr << "Error: no ending newline\n";
 			break;
+		}
 		exchange.search(line);
 	}
 }
