@@ -163,6 +163,6 @@ void BitcoinExchange::search(const std::string &line)
 		return printRate(date, date, raw_value, value);
 	std::map<std::string, double>::iterator dateFound = db.lower_bound(date);
 	if (dateFound != db.begin())
-		++dateFound;
+		--dateFound;
 	printRate(date, (*dateFound).first, raw_value, value);
 }
