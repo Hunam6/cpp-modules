@@ -16,7 +16,7 @@ void print_time(clock_t start_time, clock_t end_time,
 int main(int ac, char **av)
 {
 	// check
-	if (!PmergeMe<std::vector<long> >::checkArgs(--ac, ++av))
+	if (ac == 1 || !PmergeMe<std::vector<long> >::checkArgs(--ac, ++av))
 		(std::cout << "Error\n", exit(1));
 	// print before
 	std::cout << "Before:";
@@ -33,9 +33,11 @@ int main(int ac, char **av)
 	sorterVector.print();
 	// print std::vector's time
 	print_time(start_time, end_time, ac, "std::vector");
+	// use std::deque
 	PmergeMe<std::deque<long> > sorterDeque;
 	start_time = clock();
 	sorterDeque.sort(ac, av);
 	end_time = clock();
+	// print std::deque's time
 	print_time(start_time, end_time, ac, "std::deque ");
 }
