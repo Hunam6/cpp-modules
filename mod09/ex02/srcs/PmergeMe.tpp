@@ -22,26 +22,41 @@ PmergeMe<Container> &PmergeMe<Container>::operator=(const PmergeMe &other)
 }
 
 template <typename Container>
-bool PmergeMe<Container>::isValidValue(const std::string &str, long *result)
+bool PmergeMe<Container>::isValidValue(const char *str)
 {
 	char *endptr;
-	*result = strtol(str.c_str(), &endptr, 10);
+	long result = std::strtol(str, &endptr, 10);
 
-	if (endptr == str.c_str() || *endptr != '\0' || *result < 0)
-		return false;
+	return !(endptr == str || *endptr != '\0' || result < 0 || (result == LONG_MAX && errno == ERANGE));
+}
+
+template <typename Container>
+void PmergeMe<Container>::print()
+{
+	for (size_t i = 0; i < container.size(); i++)
+		std::cout << container[i] << " ";
+	std::cout << '\n';
+}
+
+template <typename Container>
+bool PmergeMe<Container>::checkArgs(int len, char **args)
+{
+	for (int i = 0; i < len; i++)
+		if (!isValidValue(args[i]))
+			return false;
 	return true;
 }
 
 template <typename Container>
-void PmergeMe<Container>::inputArgs(int len, char **args)
+void PmergeMe<Container>::sort(int len, char **args)
 {
 	for (int i = 0; i < len; i++)
 	{
-		long num;
-		if (!isValidValue(args[i], &num))
-			(std::cout << "Error\n", exit(1));
+		long num = strtol(args[i], NULL, 10);
 		// don't add duplicates
 		if (std::find(container.begin(), container.end(), num) == container.end())
 			container.push_back(num);
 	}
+	mergeSort(container, 0, container.size() - 1);
+	container.clear();
 }
