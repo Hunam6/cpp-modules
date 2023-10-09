@@ -56,3 +56,9 @@ void PmergeMe<Container>::mergeSort(Container &arr, int start, int end)
 	else
 		insertionSort(arr, start, end);
 }
+
+template <typename Container>
+void PmergeMe<Container>::sort()
+{
+	mergeSort(container, 0, container.size() - 1);
+}
