@@ -4,16 +4,15 @@
 #include <vector>
 #include <deque>
 
+template <typename Container>
 class PmergeMe
 {
 private:
 	static const int GROUP_SIZE = 5;
-	bool isValidValue(const std::string &str, long *result);
 
-	void insertionSort(std::vector<long> &arr, int start, int end);
-	void merge(std::vector<long> &arr, int start, int middle, int end);
-	void insertionSort(std::deque<long> &arr, int start, int end);
-	void merge(std::deque<long> &arr, int start, int middle, int end);
+	bool isValidValue(const std::string &str, long *result);
+	void insertionSort(Container &arr, int start, int end);
+	void merge(Container &arr, int start, int middle, int end);
 
 public:
 	PmergeMe();
@@ -24,8 +23,10 @@ public:
 
 	std::vector<long> argsToVector(int len, char **args);
 	std::deque<long> argsToDeque(int len, char **args);
-	void mergeSort(std::vector<long> &arr, int start, int last);
-	void mergeSort(std::deque<long> &arr, int start, int last);
+	void mergeSort(Container &arr, int start, int last);
 };
+
+#include "../srcs/PmergeMe.tpp"
+#include "../srcs/mergeInsertSort.tpp"
 
 #endif

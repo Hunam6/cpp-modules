@@ -2,23 +2,8 @@
 #include <algorithm>
 #include <iostream>
 
-std::vector<long> PmergeMe::argsToVector(int len, char **args)
-{
-	std::vector<long> out;
-
-	for (int i = 0; i < len; i++)
-	{
-		long num;
-		if (!isValidValue(args[i], &num))
-			(std::cout << "Error\n", exit(1));
-		// don't add duplicates
-		if (std::find(out.begin(), out.end(), num) == out.end())
-			out.push_back(num);
-	}
-	return out;
-}
-
-void PmergeMe::insertionSort(std::vector<long> &arr, int start, int end)
+template <typename Container>
+void PmergeMe<Container>::insertionSort(Container &arr, int start, int end)
 {
 	for (int i = start; i < end; i++)
 	{
@@ -33,13 +18,14 @@ void PmergeMe::insertionSort(std::vector<long> &arr, int start, int end)
 	}
 }
 
-void PmergeMe::merge(std::vector<long> &arr, int left, int middle, int right)
+template <typename Container>
+void PmergeMe<Container>::merge(Container &arr, int left, int middle, int right)
 {
 	int left_size = middle - left + 1;
 	int right_size = right - middle;
 
-	std::vector<long> left_arr(arr.begin() + left, arr.begin() + middle + 1);
-	std::vector<long> right_arr(arr.begin() + middle + 1, arr.begin() + right + 1);
+	Container left_arr(arr.begin() + left, arr.begin() + middle + 1);
+	Container right_arr(arr.begin() + middle + 1, arr.begin() + right + 1);
 
 	int left_idx = 0;
 	int right_idx = 0;
@@ -57,7 +43,8 @@ void PmergeMe::merge(std::vector<long> &arr, int left, int middle, int right)
 	}
 }
 
-void PmergeMe::mergeSort(std::vector<long> &arr, int start, int end)
+template <typename Container>
+void PmergeMe<Container>::mergeSort(Container &arr, int start, int end)
 {
 	if (end - start > GROUP_SIZE)
 	{
