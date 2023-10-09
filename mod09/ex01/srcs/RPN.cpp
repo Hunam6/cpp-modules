@@ -48,7 +48,7 @@ void RPN::interpret(const std::string &expr)
 		{
 			// calculate
 			if (stack.size() < 2)
-				return (std::cerr << "Error\n", emptyStack());
+				return (std::cout << "Error\n", emptyStack());
 			double second = stack.top();
 			stack.pop();
 			double first = stack.top();
@@ -59,10 +59,10 @@ void RPN::interpret(const std::string &expr)
 			stack.push(ch - '0');
 		// check formatting
 		if (stack.empty())
-			return (std::cerr << "Error\n", emptyStack());
+			return (std::cout << "Error\n", emptyStack());
 		if ((!ss.get(ch) && ch != ' ') || (ch == ' ' && !ss.eof()))
 			continue;
-		return (std::cerr << "Error\n", emptyStack());
+		return (std::cout << "Error\n", emptyStack());
 	}
 	while (stack.size() != 1)
 		stack.pop();
